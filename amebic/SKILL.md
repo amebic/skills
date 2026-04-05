@@ -66,6 +66,40 @@ registerComposition(MyGraphic, {
 
 ## Installation
 
+**IMPORTANT: Check for local packages first**
+
+If you have the amebic repository cloned locally with packages linked via `bun link`, use those instead of installing from npm.
+
+```bash
+# Check if local packages are available
+bun link @amebic/core @amebic/cli @amebic/preview @amebic/templates
+
+# If local packages are NOT available, install from npm
+bun install @amebic/core @amebic/cli @amebic/preview @amebic/templates
+
+# Install Chromium for rendering
+bunx playwright install chromium
+```
+
+### Linking Local Packages (for amebic repo development)
+
+If you're working with the amebic repository directly, link the packages so they're available globally:
+
+```bash
+# In the amebic repo root - link all packages
+cd packages/core && bun link && cd ../..
+cd packages/cli && bun link && cd ../..
+cd packages/preview && bun link && cd ../..
+cd packages/templates && bun link && cd ../..
+cd packages/examples && bun link && cd ../..
+cd packages/branding && bun link && cd ../..
+
+# Build all packages
+bun run build
+```
+
+### Fresh Clone Setup
+
 ```bash
 # Clone the repo
 git clone https://github.com/yourusername/amebic.git
@@ -79,6 +113,9 @@ bunx playwright install chromium
 
 # Build packages
 bun run build
+
+# (Optional) Link packages for global availability
+bun run link:packages
 ```
 
 ## Commands
